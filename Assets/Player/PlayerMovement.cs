@@ -6,10 +6,11 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float walkStopMoveRadius = 0.2f;
+    [SerializeField] float attackStopMoveRadius = 0.2f;
 
     ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster;
-    Vector3 currentClickTarget;
+    Vector3 currentDestination, clickPoint;
 
     bool isInDirectMode = false; // TODO: Consider making static
     private Transform m_Cam;                  // A reference to the main camera in the scenes transform
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         m_Character = GetComponent<ThirdPersonCharacter>();
         m_Cam = Camera.main.transform;
-        currentClickTarget = transform.position;
+        currentDestination = transform.position;
 	}
 
     // For key presses and whatnt
@@ -61,25 +62,50 @@ public class PlayerMovement : MonoBehaviour
 
     private void ProcessMouseMovement ()
     {
-        var playerToClickPoint = Vector3.zero;
+        clickPoint = cameraRaycaster.hit.point;
 
         if (Input.GetMouseButton(0))
         {
             switch (cameraRaycaster.layerHit)
             {
                 case Layer.Walkable:
-                    playerToClickPoint = cameraRaycaster.hit.point - transform.position;
+                    currentDestination = ShortDestination(clickPoint, walkStopMoveRadius);
                     break;
                 case Layer.Enemy:
+                    currentDestination = ShortDestination(clickPoint, attackStopMoveRadius);
                     print("Not moving to enemy");
                     break;
                 default:
                     print("Layer is not walkable or enemy");
                     return;
             }
-
         }
 
+        WalkToDestination();
+    }
+
+    private void WalkToDestination()
+    {
+        var playerToClickPoint = currentDestination - transform.position;
         m_Character.Move(playerToClickPoint, false, false);
+    }
+
+    // Subtract the clicked point distance from the move stop radius
+    Vector3 ShortDestination ( Vector3 destination, float shortening )
+    {
+        Vector3 reductionVector = (destination - transform.position).normalized * shortening;
+        return destination - reductionVector;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawLine(transform.position, currentDestination);
+        Gizmos.DrawSphere(currentDestination, 0.1f);
+        Gizmos.DrawSphere(clickPoint, 0.15f);
+
+        // Gizmos.color = new Color(255f, 0f, 255f, 0.5f);
+        // Gizmos.DrawSphere(transform.position, attackStopMoveRadius);
+
     }
 }
