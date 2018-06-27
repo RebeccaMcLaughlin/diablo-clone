@@ -9,14 +9,20 @@ public class EnemyUI : MonoBehaviour {
     [Tooltip("The UI canvas prefab")]
     [SerializeField]
     GameObject enemyCanvasPrefab = null;
-
+    CapsuleCollider capsuleCollider;
     Camera cameraToLookAt;
 
     // Use this for initialization 
     void Start()
     {
+        // Get height of enemy collider
+        capsuleCollider = GetComponent<CapsuleCollider>();
         cameraToLookAt = Camera.main;
-        Instantiate(enemyCanvasPrefab, transform.position, Quaternion.identity, transform);
+
+        // Add height to the transform position
+        float newY = transform.position.y + (capsuleCollider.height * transform.localScale.y) * 1.15f;
+        Vector3 newPosition = new Vector3(transform.position.x, newY, transform.position.z);
+        Instantiate(enemyCanvasPrefab, newPosition, transform.rotation, transform);
     }
 
     // Update is called once per frame 
