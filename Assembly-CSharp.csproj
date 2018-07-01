@@ -60,9 +60,12 @@
      <Compile Include="Assets\Enemies\Enemy.cs" />
      <Compile Include="Assets\Enemies\EnemyHealthBar.cs" />
      <Compile Include="Assets\Enemies\EnemyUI.cs" />
+     <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
      <Compile Include="Assets\Player\Player.cs" />
      <Compile Include="Assets\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Player\Utility.cs" />
+     <None Include="Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
+     <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
      <None Include="Assets\Scenes\Skybox\Shaders\Skybox Cubemap Extended.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Becca/Documents/Unity/Dragon RPG/Dragon RPG/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
