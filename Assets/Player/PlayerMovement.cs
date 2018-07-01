@@ -79,9 +79,11 @@ public class PlayerMovement : MonoBehaviour
                     print("Layer is not walkable or enemy");
                     return;
             }
-        }
-
         WalkToDestination();
+        } else
+        {
+            m_Character.Move(Vector3.zero, false, false);
+        }
     }
 
     private void WalkToDestination()
