@@ -37,8 +37,8 @@ GameObject:
   - component: {fileID: 4608444428717856}
   - component: {fileID: 20860907596812334}
   - component: {fileID: 81375761113876848}
-  - component: {fileID: 114998996899217718}
   - component: {fileID: 114738390042446988}
+  - component: {fileID: 114899488335202162}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065280361154732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.679604, y: 3.36, z: -1.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4608444428717856}
@@ -141,8 +141,8 @@ MonoBehaviour:
   walkCursor: {fileID: 2800000, guid: a62704018241054438bb54fe4b5b8b86, type: 3}
   attackCursor: {fileID: 2800000, guid: c073d3f46ea61ab458809b1dc27104eb, type: 3}
   errorCursor: {fileID: 2800000, guid: 47889f2035690ff4a94cd04d69d2d922, type: 3}
-  cursorHotspot: {x: 96, y: 96}
---- !u!114 &114998996899217718
+  cursorHotspot: {x: 0, y: 0}
+--- !u!114 &114899488335202162
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -150,8 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1596903460074208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd52552302e4824a8ee8d7c169cf62b, type: 3}
+  m_Script: {fileID: 11500000, guid: d02853f5d34bd8f429969ac34c466d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPriorities: 0a00000009000000
-  distanceToBackground: 100
+  layerPriorities: 0a0000000b00000009000000
