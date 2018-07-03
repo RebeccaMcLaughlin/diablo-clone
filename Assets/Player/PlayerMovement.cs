@@ -37,17 +37,18 @@ public class PlayerMovement : MonoBehaviour
 
     // Fixed update is called in sync with physics
     void FixedUpdate()
-    { 
+    {
         if (isInDirectMode)
         {
             ProcessDirectMovement();
-        } else
+        }
+        else
         {
             ProcessMouseMovement();
         }
     }
 
-    private void ProcessDirectMovement ()
+    private void ProcessDirectMovement()
     {
         // read inputs
         float h = Input.GetAxis("Horizontal");
@@ -60,30 +61,31 @@ public class PlayerMovement : MonoBehaviour
         m_Character.Move(m_Move, false, false);
     }
 
-    private void ProcessMouseMovement ()
+    private void ProcessMouseMovement()
     {
-        clickPoint = cameraRaycaster.hit.point;
+        //clickPoint = cameraRaycaster.hit.point;
 
-        if (Input.GetMouseButton(0))
-        {
-            switch (cameraRaycaster.layerHit)
-            {
-                case Layer.Walkable:
-                    currentDestination = ShortDestination(clickPoint, walkStopMoveRadius);
-                    break;
-                case Layer.Enemy:
-                    currentDestination = ShortDestination(clickPoint, attackStopMoveRadius);
-                    print("Not moving to enemy");
-                    break;
-                default:
-                    print("Layer is not walkable or enemy");
-                    return;
-            }
-        WalkToDestination();
-        } else
-        {
-            m_Character.Move(Vector3.zero, false, false);
-        }
+        //if (Input.GetMouseButton(0))
+        //{
+        //    switch (cameraRaycaster.layerHit)
+        //    {
+        //        case Layer.Walkable:
+        //            currentDestination = ShortDestination(clickPoint, walkStopMoveRadius);
+        //            break;
+        //        case Layer.Enemy:
+        //            currentDestination = ShortDestination(clickPoint, attackStopMoveRadius);
+        //            print("Not moving to enemy");
+        //            break;
+        //        default:
+        //            print("Layer is not walkable or enemy");
+        //            return;
+        //    }
+        //    WalkToDestination();
+        //}
+        //else
+        //{
+        //    m_Character.Move(Vector3.zero, false, false);
+        //}
     }
 
     private void WalkToDestination()

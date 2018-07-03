@@ -62,7 +62,6 @@
      <Compile Include="Assets\Enemies\EnemyUI.cs" />
      <Compile Include="Assets\Player\Player.cs" />
      <Compile Include="Assets\Player\PlayerMovement.cs" />
-     <Compile Include="Assets\Player\Utility.cs" />
      <Compile Include="Assets\Utility\SpinMe.cs" />
      <None Include="Assets\Scenes\Skybox\Shaders\Skybox Cubemap Extended.shader" />
  <Reference Include="UnityEditor.StandardEvents">
